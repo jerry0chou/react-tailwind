@@ -46,9 +46,9 @@ function App() {
                   <div className="flex flex-col sm:flex-row sm:-mx-2">
                       <div className="mt-4 sm:w-1/3">
                           <div
-                              className="bg-white p-8 border-b-4
+                              className="bg-white h-full p-8 border-b-4
                               border-pink-500 rounded-lg flex flex-col items-center
-                              sm:mx-2
+                              sm:mx-2 sm:p-3 md:p-8
                               ">
                               <div className="bg-gray-200 text-indigo-700 w-16 rounded-full p-2">
                                   <CSSIcon className="h-12 w-12 fill-current"/>
@@ -62,8 +62,8 @@ function App() {
 
                       <div className="mt-4 sm:w-1/3">
                           <div
-                              className="bg-white p-8 border-b-4
-                              border-pink-500 rounded-lg flex flex-col items-center  sm:mx-2">
+                              className="bg-white h-full p-8 border-b-4
+                              border-pink-500 rounded-lg flex flex-col items-center  sm:mx-2 sm:p-3 md:p-8">
                               <div className="bg-gray-200 text-indigo-700 w-16 rounded-full p-2">
                                   <DeveloperIcon className="h-12 w-12 fill-current"/>
                               </div>
@@ -75,8 +75,8 @@ function App() {
 
                       <div className="mt-4 sm:w-1/3">
                           <div
-                              className="bg-white p-8 border-b-4
-                              border-pink-500 rounded-lg flex flex-col items-center  sm:mx-2">
+                              className="bg-white h-full p-8 border-b-4
+                              border-pink-500 rounded-lg flex flex-col items-center  sm:mx-2 sm:p-3 md:p-8">
                               <div className="bg-gray-200 text-indigo-700 w-16 rounded-full p-2">
                                   <MobileIcon className="h-12 w-12 fill-current"/>
                               </div>
@@ -87,9 +87,48 @@ function App() {
                       </div>
                   </div>
               </div>
+              <div className="bg-gray-800 py-12 mt-12 w-full
+              flex flex-col items-center border-t-2 border-black">
+                  <h2 className="font-bold text-xl text-gray-400">Sign up to download the free PDF</h2>
+
+                  <form className="max-w-xl w-full text-gray-200 mt-4 px-8 md:px-0" action="#" method="post">
+                      <div className="flex flex-col md:flex-row">
+                          <label htmlFor="first_name" className="sr-only">First Name</label>
+                          <input
+                              className="bg-gray-700 mt-4 border border-gray-600 rounded-lg py-2 px-4 w-full md: mx-2"
+                              type="text" id="first_name" placeholder="First Name"
+                          />
+
+                          <label htmlFor="last_name" className="sr-only">Last Name</label>
+                          <input
+                              className="bg-gray-700 mt-4 border border-gray-600 rounded-lg py-2 px-4 w-full md: mx-2"
+                              type="text" id="last_name" placeholder="Last Name"
+                          />
+
+                      </div>
+
+                      <div className="flex flex-col md:flex-row">
+                          <label htmlFor="email" className="sr-only">Email Address</label>
+                          <input
+                              className="bg-gray-700 mt-4 border border-gray-600 rounded-lg py-2 px-4 w-full md: mx-2"
+                              type="email" id="email" placeholder="jerry@gmail.com"
+                          />
+
+                          <label htmlFor="title" className="sr-only">Title</label>
+                          <input
+                              className="bg-gray-700 mt-4 border border-gray-600 rounded-lg py-2 px-4 w-full md: mx-2"
+                              type="text" id="title" placeholder="Your title"
+                          />
+                      </div>
+                      <div className="flex flex-col md:flex-row">
+                          <button className="bg-blue-600 text-sm mt-4 md: mx-2 rounded-lg py-2 px-4 block w-full">Create Account</button>
+                      </div>
+                  </form>
+
+              </div>
           </main>
-          <footer>
-              <p>Copyright © 2019 Scrimba</p>
+          <footer className="bg-gray-800 w-full text-center pb-8 text-xs font-light text-gray-600">
+              <p >Copyright © 2019 Scrimba</p>
           </footer>
       </div>
   );
