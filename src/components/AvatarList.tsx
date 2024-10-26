@@ -1,4 +1,4 @@
-import React, {useRef} from 'react';
+import React, {useRef, useState} from 'react';
 
 interface AvatarListProps {
     url: string;
@@ -17,15 +17,31 @@ function Avatar(a: AvatarListProps) {
         </div>
     )
 }
-
-interface  SwitchProps{
-    onClick: (kind: 'Slack' | 'Tight')=>void;
+interface SmallAvatarProps {
+    url: string;
 }
-function Switch(p: SwitchProps){
+function SmallAvatar(p: SmallAvatarProps) {
+    return (
+        <div className="flex flex-row flex-shrink-0 -ml-3">
+            <img
+                className="size-16 bg-amber-300
+                rounded-full border-amber-500 border-2 hover:border-[4px] shadow-md
+                hover:shadow-lg shadow-amber-500"
+                src={p.url}
+                alt="avatar"/>
+        </div>
+    )
+}
+
+interface SwitchProps {
+    onClick: (kind: 'Slack' | 'Tight') => void;
+}
+
+function Switch(p: SwitchProps) {
     const count = useRef(0)
     const onClick = () => {
         count.current++;
-        p.onClick(count.current %2 == 0? 'Slack' : 'Tight')
+        p.onClick(count.current % 2 == 0 ? 'Slack' : 'Tight')
     }
 
     return (
@@ -48,17 +64,32 @@ function Switch(p: SwitchProps){
 }
 
 export default function AvatarList() {
+    const [isSlack, setIsSlack] = useState(true);
     return (
         <div className="flex flex-col items-center justify-center w-full">
-            <Switch onClick={(s)=> console.log(s)}/>
-            <div className="flex  justify-center lg:w-3/5 p-5 gap-10 flex-wrap shadow bg-gray-200 border-2 rounded-3xl">
+            <Switch onClick={(s)=> { if(s == 'Slack') setIsSlack(true); else setIsSlack(false); }}/>
+            {isSlack && <div className="flex  justify-center lg:w-3/5 p-5 gap-10 flex-wrap shadow bg-gray-200 border-2 rounded-3xl">
                 <Avatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Sarah" name="Sarah"/>
                 <Avatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Eliza" name="Eliza"/>
                 <Avatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Brook" name="Brook"/>
                 <Avatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Ryker" name="Ryker"/>
                 <Avatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Luis" name="Luis"/>
                 <Avatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Eden" name="Eden"/>
-            </div>
+            </div>}
+            {!isSlack &&
+                <div className="flex justify-center w-fit pl-4 p-1 flex-nowrap shadow bg-gray-200 border-2 rounded-3xl">
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Sarah" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Eliza" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Brook" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Ryker" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Luis" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Eden" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Alexander" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Leo" />
+                    <SmallAvatar url="https://api.dicebear.com/9.x/adventurer/svg?seed=Wyatt" />
+                </div>
+            }
+
         </div>
     )
 }
